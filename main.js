@@ -1,109 +1,3 @@
-if (localStorage.getItem("appearance") == "neon") {
-  var cssElm = document.createElement("link");
-  cssElm.setAttribute("href", "/neon.css");
-  cssElm.setAttribute("rel", "stylesheet");
-  cssElm.setAttribute("id", "neoncss");
-  document.head.appendChild(cssElm);
-
-  console.log("neon");
-}
-if (localStorage.getItem("background") == null) {
-  localStorage.setItem("background", "default");
-}
-if (localStorage.getItem("appearance") !== "neon") {
-  if (document.getElementById("neoncss")) {
-    const link = document.getElementById("neoncss");
-    console.log(link);
-    link.remove();
-
-    console.log("remove neon");
-  }
-}
-function setLogo(highlight) {
-  document.querySelector("link[rel='icon']").href = "/assets/icon.png";
-}
-function getLogo(highlight = "#2493ff") {
-  console.log("for later update setlogo()");
-}
-var appearance = localStorage.getItem("appearance");
-
-if (localStorage.hasOwnProperty("appearance")) {
-  document
-    .getElementsByTagName("body")[0]
-    .setAttribute("appearance", appearance);
-  setLogo(
-    getComputedStyle(document.body)
-      .getPropertyValue("--highlight")
-      .replaceAll(" ", "")
-  );
-} else {
-  localStorage.setItem("appearance", "default");
-  document
-    .getElementsByTagName("body")[0]
-    .setAttribute("appearance", "default");
-}
-
-const wndw = window.location.hostname;
-const ads = document.querySelector(".content");
-const main = document.querySelector(".main-content");
-if (wndw == "emulatoros.github.io") {
-  if (ads !== null) {
-    if (document.body.dataset.ess) {
-      const autogads = document.createElement("script");
-      autogads.setAttribute("async", "");
-      autogads.setAttribute(
-        "src",
-        "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2209834467602790"
-      );
-      autogads.setAttribute("crossorigin", "anonymous");
-      document.head.appendChild(autogads);
-      console.log("ess");
-    } else {
-      const adScript2 = document.createElement("script");
-      adScript2.innerText =
-        "(adsbygoogle = window.adsbygoogle || []).push({});(adsbygoogle = window.adsbygoogle || []).push({});";
-      const other = document.createElement("div");
-      other.classList.add("othergames-container");
-      ads.append(other);
-      const adDiv = document.createElement("div");
-      adDiv.classList.add("adDiv");
-      other.append(adDiv);
-
-      const adScript = document.createElement("script");
-      adScript.async = true;
-      adScript.src =
-        "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2209834467602790";
-      adScript.crossOrigin = "anonymous";
-
-      const adIns = document.createElement("ins");
-      adIns.setAttribute("class", "adsbygoogle");
-      adIns.setAttribute("style", "display:block;margin:auto");
-      adIns.setAttribute("data-full-width-responsive", "true");
-      adIns.setAttribute("data-ad-format", "auto");
-      adIns.setAttribute("data-ad-client", "ca-pub-2209834467602790");
-      adIns.setAttribute("data-ad-slot", "1042232702");
-
-      const adIns2 = document.createElement("ins");
-      adIns2.setAttribute("class", "adsbygoogle");
-      adIns2.setAttribute("style", "display:block;margin-top:5%");
-      adIns2.setAttribute("data-full-width-responsive", "true");
-      adIns2.setAttribute("data-ad-format", "auto");
-      adIns2.setAttribute("data-ad-client", "ca-pub-2209834467602790");
-      adIns2.setAttribute("data-ad-slot", "9792797175");
-
-      adDiv.append(adScript, adIns);
-      $(ads).after(adIns2, adScript2);
-
-      console.log("Ads displayed");
-    }
-
-    console.log("game page");
-  } else {
-    console.log("no game page");
-  }
-} else {
-  console.log(wndw + " no ads allowed");
-}
 //Declare variables for cloak here
 const local_title = localStorage.getItem("title");
 const local_icon = localStorage.getItem("icon");
@@ -115,88 +9,30 @@ if (window.localStorage.hasOwnProperty("title")) {
 //Fetch and set from user's input
 if (window.localStorage.hasOwnProperty("icon")) {
   document.querySelector("link[rel=icon]").href = local_icon;
-} else {
-  document.querySelector("link[rel=icon]").href = "/assets/icon.png";
 }
 
 //Add Google Analytics
 const gascript = document.createElement("script");
 gascript.setAttribute("async", "");
-gascript.setAttribute(
-  "src",
-  "https://www.googletagmanager.com/gtag/js?id=G-NSZB9Q5L1N"
-);
+gascript.setAttribute("src", "https://www.googletagmanager.com/gtag/js?id=G-NSZB9Q5L1N");
 const inlinegascript = document.createElement("script");
 inlinegascript.innerHTML = `window.dataLayer = window.dataLayer || []; 
 function gtag(){dataLayer.push(arguments);} 
 gtag('js', new Date()); 
-gtag('config', 'G-NSZB9Q5L1N');`;
+gtag('config', 'G-NSZB9Q5L1N');`
 document.head.append(gascript, inlinegascript);
-
-if (wndw == "emulatoros.github.io") {
-  const gascript2 = document.createElement("script");
-  gascript2.setAttribute("async", "");
-  gascript2.setAttribute(
-    "src",
-    "https://www.googletagmanager.com/gtag/js?id=UA-225490180-1"
-  );
-  const inlinegascript2 = document.createElement("script");
-  inlinegascript2.innerHTML = `window.dataLayer = window.dataLayer || []; 
-function gtag(){dataLayer.push(arguments);} 
-gtag('js', new Date()); 
-gtag('config', 'UA-225490180-1');`;
-  document.head.append(gascript2, inlinegascript2);
-} else {
-  const gascript2 = document.createElement("script");
-  gascript2.setAttribute("async", "");
-  gascript2.setAttribute(
-    "src",
-    "https://www.googletagmanager.com/gtag/js?id=UA-225490180-2"
-  );
-  const inlinegascript2 = document.createElement("script");
-  inlinegascript2.innerHTML = `window.dataLayer = window.dataLayer || []; 
-function gtag(){dataLayer.push(arguments);} 
-gtag('js', new Date()); 
-gtag('config', 'UA-225490180-2');`;
-  document.head.append(gascript2, inlinegascript2);
-}
 
 //Semantic - Major.Minor.Patch
 const sArr = [`1`, `4`, `0`];
 const version = "v" + sArr.join(".");
-document.body.style.backgroundColor = "var(--bg-color)";
-document.body.style.fontFamily = "var(--font)";
+
 //Fetch visit count
-const visitapi =
-  "https://api.countapi.xyz/update/emulatoros.github.io/78c84613-3752-436e-ae7c-29f94d1fc15f/?amount=1";
+const visitapi = "https://api.countapi.xyz/update/emulatoros.github.io/8f40b809-76a1-46fd-b76e-6cbd8827df44/?amount=1";
 fetch(visitapi)
-  .then((res) => res.json())
-  .then((res) => {
-    if (document.getElementById("visit-count") !== null) {
-      document.getElementById("visit-count").innerText = res.value; //Add commas
-    }
-  });
-(function (history) {
-  var pushState = history.pushState;
-  history.pushState = function (state) {
-    if (typeof history.onpushstate == "function") {
-      history.onpushstate(arguments);
-    }
-    return pushState.apply(history, arguments);
-  };
-})(window.history);
-const gc = document.createElement("script");
-gc.src = "/assets/js/count.js";
-gc.setAttribute("data-goatcounter", "https://emulatoros.goatcounter.com/count");
-gc.setAttribute("data-goatcounter-settings", '{"allow_local": true}');
-document.head.appendChild(gc);
-// Manage page changes
-history.onpushstate = () => {
-  setTimeout(() => {
-    console.log(location.pathname);
-    goatcounter.count();
-  }, 1);
-};
+.then((res) => res.json())
+.then((res) => {
+  document.getElementById("visit-count").innerText = " " + parseInt(res.value).toLocaleString("en-US"); //Add commas
+});
 
 //Turn off GSAP null warnings (if present)
 try {
@@ -228,7 +64,6 @@ $(window).scroll(function () {
     $(".aa-nav").addClass("aa-small-nav");
     $(".aa-nav-icon").addClass("aa-small-nav-icon");
     $(".aa-nav-items").addClass("aa-small-nav-items");
-    $(".aa-nav-items2").addClass("aa-small-nav-items");
     $(".aa-hamburger-menu").addClass("aa-small-hamburger-menu");
     isExpanded = false;
   }
@@ -237,7 +72,6 @@ $(window).scroll(function () {
     $(".aa-nav").removeClass("aa-small-nav");
     $(".aa-nav-icon").removeClass("aa-small-nav-icon");
     $(".aa-nav-items").removeClass("aa-small-nav-items");
-    $(".aa-nav-items2").removeClass("aa-small-nav-items");
     $(".aa-hamburger-menu").removeClass("aa-small-hamburger-menu");
     $(".aa-nav-item > a").css("color", "white");
     isExpanded = true;
@@ -246,22 +80,59 @@ $(window).scroll(function () {
 
 //Prepend Navbar (using innerHTML because there's no escaped input)
 const $header = document.createElement("header");
-$header.setAttribute("id", "header");
 $header.innerHTML = `<nav class="aa-nav">
-<div class="aa-nav-items2">
-<span class="aa-nav-item" >
-  <div class="users-online"><i class="fas fa-users"></i> <span id="user-count">13</span></div>
-</span>
+<div class="aa-nav-icon-container">
+  <a href="/"><img class="aa-nav-icon" src="/assets/img/socials/emulatoros.png" alt="Blank" /></a>
 </div>
 <div class="aa-nav-items">
-  <span class="aa-nav-item"><a href="/home" target="_top">Home</a></span>
-  
-  <span class="aa-nav-item"><a href="/" target="_top">Games</a></span>
-     <span class="aa-nav-item"><a href="/apps" target="_top">Apps</a></span>
-     <span class="aa-nav-item"><a href="/changelog" target="_top">Changelog</a></span>
-  <span class="aa-nav-item"><a href="/settings" target="_top">Settings</a></span>
-  </div>
+  <span class="aa-nav-item"><a href="https://emulatoros.github.io" target="_top">Home</a></span>
+  <span class="aa-nav-item"><a href="https://emulatoros.github.io/Quick-Links.html" target="_top">Quick Links</a></span>
+  <span class="aa-nav-item"><a href="https://emulatoros.github.io" target="_top">Games</a></span>
+  <span class="aa-nav-item"><a href="https://emulatoros.github.io//emulatorjs/index.html" target="_top">EmulatorJS</a></span>
+     <span class="aa-nav-item"><a href="https://emulatoros.github.io/tests.html" target="_top">Tests</a></span>
+  <span class="aa-nav-item"><a href="https://emulatoros.github.io/settings.html" target="_top">Settings</a></span>
+
+  <span class="aa-nav-item"><!-- Default Statcounter code for EmulatorOS https://emulatoros.github.io/ -->
+<script type="text/javascript">
+var sc_project=12740930; 
+var sc_invisible=0; 
+var sc_security="4dc10a44"; 
+var scJsHost = "https://";
+document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="Web Analytics Made Easy -
+Statcounter" href="https://statcounter.com/" target="_blank"><img
+class="statcounter" src="https://c.statcounter.com/12740930/0/4dc10a44/0/"
+alt="Web Analytics Made Easy - Statcounter"
+referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+<!-- End of Statcounter Code --></span>
+  <!-- Default Statcounter code for EmulatorOS https://emulatoros.github.io/ -->
+<script type="text/javascript">
+var sc_project=12740930; 
+var sc_invisible=0; 
+var sc_security="4dc10a44"; 
+var scJsHost = "https://";
+document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="Web Analytics Made Easy -
+Statcounter" href="https://statcounter.com/" target="_blank"><img
+class="statcounter" src="https://c.statcounter.com/12740930/0/4dc10a44/0/"
+alt="Web Analytics Made Easy - Statcounter"
+referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+<!-- End of Statcounter Code -->
+</div>
 </nav>
+<script>
+  var xhr = new XMLHttpRequest();
+xhr.open("GET", "https://api.countapi.xyz/update/emulatoros.github.io/0fb02c16-3fdb-4fd2-a410-38466b7b1251/?amount=1");
+xhr.responseType = "json";
+xhr.onload = function() {
+    document.getElementById('visits').innerText = this.response.value;
+}
+xhr.send();
+  </script>
 
 <div class="aa-hamburger-menu collapsed" id="hamburgerMenu" onclick="toggleMenu()">
 <span class="aa-icon-bar"></span>
@@ -271,31 +142,16 @@ $header.innerHTML = `<nav class="aa-nav">
 
 <div class="aa-mobile-overlay">
 <ul class="aa-mobile-nav-items">
-  <li><a href="/home" target="_top">Home</a></li>
-  <li><a href="/" target="_top">Games</a></li>
-  <li><a href="/apps" target="_top">Apps</a></li>
-  <li><a href="/changelog" target="_top">Changelog</a></li>
-  <li><a href="/settings" target="_top">Settings</a></li>
+  <li><a href="https://emulatoros.github.io/All-links/#top" target="_top">Home</a></li>
+  <li><a href="https://emulatoros.github.io/Quick-Links.html" target="_top">Quick Links</a></li>
+  <li><a href="/faq.html" target="_top">FAQ</a></li>
+  <li><a href="/changelog.html" target="_top">Changelog</a></li>
+  <li><a href="/changelog.html" target="_top">Settings</a></li>
 </ul>
 </div>`;
 document.body.prepend($header);
 
-const $footer = document.createElement("div");
-$footer.setAttribute("class", "footer");
-$footer.innerHTML = `<a class="link underline" href="https://github.com/EmulatorOS/EmulatorOS.github.io">G&#173;it&#173;h&#173;ub</a>
 
-<a class="link underline" href="/credits">Credits</a>
-<a class="link underline" href="/terms">Terms</a>
-<a class="link underline" href="/privacy" style="margin-right: 14px;">Privacy</a>
-
-<p class="at">© Emulator&#173;OS 2021-</p> <p id="yearp"></p>`;
-document.body.append($footer);
-
-yearset = new Date().getFullYear();
-const yearp = document.getElementById("yearp");
-yearp.innerHTML = " " + yearset;
-
-const pxsrc = "https://counter.up.railway.app";
 
 const px = document.createElement("iframe");
 px.src = pxsrc;
@@ -303,35 +159,17 @@ px.classList.add("counter-frame");
 document.body.appendChild(px);
 
 window.onmessage = function (e) {
-  if (e.origin == "https://counter.up.railway.app") {
+  if (e.origin == pxsrc) {
     document.getElementById("user-count").innerText = e.data;
   }
 };
 
-if (localStorage.getItem("plink") === null) {
-  console.log("null");
-  localStorage.setItem("plink", "emulatoros.up.railway.app");
-}
 
-if (localStorage.getItem("plink") == "aab0b842-deb7-4ed9-9916-d14602d15beb.id.repl.co") {
-  localStorage.setItem("plink", "emulatoros.up.railway.app");
-} else if (localStorage.getItem("plink") == "r3os.herokuapp.com") {
-  localStorage.setItem("plink", "emulatoros.up.railway.app");
-} else if (localStorage.getItem("plink") == "emulatoros3.herokuapp.com") {
-  localStorage.setItem("plink", "emulatoros.up.railway.app ");
-} else if (localStorage.getItem("plink") == "emulatoros.up.railway.app ") {
-  localStorage.setItem("plink", "emulatoros.up.railway.app");
-}
 
-function searchGames() {
-  var e = document.getElementById("GameSearch").value.toLowerCase(),
-    a = document.getElementsByClassName("GameName");
-  for (i = 0; i < a.length; i++)
-    a[i].innerText.toLowerCase().includes(e)
-      ? a[i].setAttribute("style", "display:inline !important")
-      : a[i].setAttribute("style", "display:none !important");
+//Check for essential pages
+if (document.body.dataset.ess) {
+  document.body.appendChild($footer);
+} else {
+  let bottomwrapper = document.getElementsByClassName("content-wrapper");
+  bottomwrapper[bottomwrapper.length - 1].appendChild($footer);
 }
-
-$(".fa-star").click(function () {
-  $(this).toggleClass("fas far");
-});
